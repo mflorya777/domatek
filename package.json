@@ -1,0 +1,24 @@
+{
+  "name": "domatek-configurator",
+  "private": true,
+  "version": "1.0.0",
+  "description": "3D-конфигуратор модульных бань DOMATEK (пилот)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "textures": "python3 tools/gen_textures.py"
+  },
+  "dependencies": {
+    "@dgreenheck/ez-tree": "1.1.0",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.180.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.1"
+  }
+}
