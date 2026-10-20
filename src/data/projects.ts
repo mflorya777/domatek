@@ -87,7 +87,6 @@ export interface Project {
   /** Covered canopy over the deck (option `canopy`). */
   canopy?: { rect: Rect };
   stove: { at: Vec2; facing: '+x' | '-x' | '+z' | '-z' };
-  furako: Vec2;
   furniture: { at: Vec2; rot: number; chairs: 1 | 2 }[];
   /** Plan direction from the house centre towards the main viewpoint. */
   view: Vec2;
@@ -166,7 +165,6 @@ const NORD: Project = {
   },
   canopy: { rect: [2.2, 2.4, 6.0, 6.0] },
   stove: { at: [3.55, 2.05], facing: '+z' },
-  furako: [0.95, 4.15],
   furniture: [{ at: [4.3, 4.85], rot: 0.5, chairs: 2 }],
   view: [-0.62, 1],
   defaults: {
@@ -237,7 +235,6 @@ const HYGGE: Project = {
     extensionSteps: { at: [5.2, 4.4], dir: '+z', width: 1.2 },
   },
   stove: { at: [3.95, 1.45], facing: '+z' },
-  furako: [7.6, 1.2],
   furniture: [{ at: [2.5, 2.55], rot: 0.45, chairs: 1 }],
   view: [-0.55, 1],
   defaults: {

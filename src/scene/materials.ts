@@ -153,19 +153,6 @@ export class Materials {
       cushion: this.memo('cushion', () =>
         new THREE.MeshPhysicalMaterial({ color: 0x8d8a84, roughness: 0.95, sheen: 1, sheenColor: 0xcfcac2, sheenRoughness: 0.6 }),
       ),
-      water: this.memo('poolWater', () =>
-        new THREE.MeshPhysicalMaterial({
-          color: 0x1d3a40,
-          roughness: 0.05,
-          metalness: 0,
-          transmission: 0,
-          transparent: true,
-          opacity: 0.88,
-          normalMap: this.tex('tex/waternormals.jpg'),
-          normalScale: new THREE.Vector2(0.15, 0.15),
-          envMapIntensity: 1.2,
-        }),
-      ),
       concrete: this.memo('concrete', () =>
         new THREE.MeshStandardMaterial({
           map: this.tex('tex/concrete/color.webp', true),
@@ -247,7 +234,6 @@ export class Materials {
       case 'lining': return this.lining();
       case 'bench': return this.bench(c);
       case 'pine': return this.woodSet('wood_pine');
-      case 'cedar': return this.woodSet('bench_cedar', { normalScale: 0.6 });
       case 'thermo': return this.woodSet('wood_thermo');
       case 'floor': return this.woodSet('wood_larch', { normalScale: 0.4, color: 0xd9cfc4 });
       default: {

@@ -28,7 +28,6 @@ export interface Config {
   benches: BenchWood;
   benchLight: boolean;
   saltWall: boolean;
-  furako: boolean;
   furniture: boolean;
   package: Package;
   insulation: 150 | 200;
@@ -51,7 +50,6 @@ const BASE: Omit<Config, 'project'> = {
   benches: 'aspen',
   benchLight: true,
   saltWall: false,
-  furako: false,
   furniture: true,
   package: 'turnkey',
   insulation: 150,
@@ -68,7 +66,7 @@ export function defaultConfig(projectId: string = PROJECTS[0].id): Config {
 const KEYS: (keyof Config)[] = [
   'project', 'warmMaterial', 'warmOrientation', 'accentMaterial', 'accentColor', 'frameColor', 'glass',
   'deck', 'deckMaterial', 'deckExtended', 'canopy', 'plinth', 'stove', 'benches', 'benchLight', 'saltWall',
-  'furako', 'furniture', 'package', 'insulation', 'distance',
+  'furniture', 'package', 'insulation', 'distance',
 ];
 
 export function encodeConfig(c: Config): string {

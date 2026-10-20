@@ -1,83 +1,8 @@
-/** Optional extras: cedar hot tub (furako) with its heater, terrace lounge furniture. */
+/** Optional extras: terrace lounge furniture. */
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
-import { boardProfile, box, extrude, flipWinding } from '../geometry';
 import type { HouseCtx } from './context';
 import { DECK_TOP } from './base';
-
-export function buildFurako(ctx: HouseCtx) {
-  const [cx, cz] = ctx.p.furako;
-  const R = 0.9;
-  const H = 1.0;
-  const y0 = 0.05;
-  const staves = 52;
-  const t = 0.045;
-  const w = (2 * Math.PI * R) / staves;
-  for (let i = 0; i < staves; i++) {
-    const a = (i / staves) * Math.PI * 2;
-    const g = extrude(boardProfile(w + 0.002, t, 0.004), H, { uOffset: ctx.rnd(), vOffset: ctx.rnd() });
-    // X = height, Y = tangential width, Z = thickness (outward)
-    g.rotateZ(Math.PI / 2);
-    g.translate(0, y0, R - t);
-    g.rotateY(a);
-    g.translate(cx, 0, cz);
-    ctx.b.add('cedar', g);
-  }
-  // inner liner and rim
-  const liner = new THREE.CylinderGeometry(R - t, R - t, H - 0.05, 64, 1, true).toNonIndexed();
-  flipWinding(liner);
-  const ln = liner.getAttribute('normal') as THREE.BufferAttribute;
-  for (let i = 0; i < ln.count; i++) ln.setXYZ(i, -ln.getX(i), -ln.getY(i), -ln.getZ(i));
-  liner.translate(cx, y0 + (H - 0.05) / 2 + 0.05, cz);
-  ctx.b.add('cedar', liner);
-  const rim = new THREE.RingGeometry(R - t - 0.02, R + 0.02, 72, 1);
-  rim.rotateX(-Math.PI / 2);
-  rim.translate(cx, y0 + H + 0.001, cz);
-  ctx.b.add('cedar', rim);
-  for (const hy of [0.18, H - 0.2]) {
-    const hoop = new THREE.CylinderGeometry(R + 0.006, R + 0.006, 0.05, 72, 1, true);
-    hoop.translate(cx, y0 + hy, cz);
-    ctx.b.add('blackSteel', hoop);
-  }
-  // water
-  const water = new THREE.Mesh(new THREE.CircleGeometry(R - t - 0.005, 64), ctx.mats.std.water);
-  water.rotation.x = -Math.PI / 2;
-  water.position.set(cx, y0 + H - 0.14, cz);
-  water.userData.noAO = true;
-  ctx.add(water);
-  const nm = ctx.mats.std.water.normalMap!;
-  ctx.updaters.push((tt) => nm.offset.set(tt * 0.01, tt * 0.013));
-  // integrated stove: a steel body inside, chimney beside the rim
-  const sa = Math.PI * 0.75;
-  const sx = cx + Math.cos(sa) * (R - 0.25);
-  const sz = cz + Math.sin(sa) * (R - 0.25);
-  const body = new THREE.CylinderGeometry(0.17, 0.17, 0.7, 32);
-  body.translate(sx, y0 + 0.4, sz);
-  ctx.b.add('blackSteel', body);
-  const pipe = new THREE.CylinderGeometry(0.06, 0.06, 1.6, 32, 1, true);
-  pipe.translate(sx, y0 + H + 0.6, sz);
-  ctx.b.add('stainless', pipe);
-  const cap = new THREE.ConeGeometry(0.12, 0.08, 32, 1, true);
-  cap.translate(sx, y0 + H + 1.48, sz);
-  ctx.b.add('stainless', cap);
-  // two-step cedar stairs
-  const da = -Math.PI * 0.25;
-  const dir = new THREE.Vector3(Math.cos(da), 0, Math.sin(da));
-  for (let k = 0; k < 2; k++) {
-    const st = box(0.7, 0.04, 0.3, 1, 'x');
-    const d = R + 0.18 + k * 0.3;
-    st.rotateY(-da + Math.PI / 2);
-    st.translate(cx + dir.x * d, 0.62 - k * 0.3, cz + dir.z * d);
-    ctx.b.add('cedar', st);
-    for (const e of [-1, 1]) {
-      const leg = box(0.04, 0.62 - k * 0.3, 0.26);
-      const side = new THREE.Vector3(-dir.z, 0, dir.x).multiplyScalar(e * 0.3);
-      leg.rotateY(-da + Math.PI / 2);
-      leg.translate(cx + dir.x * d + side.x, (0.62 - k * 0.3) / 2, cz + dir.z * d + side.z);
-      ctx.b.add('cedar', leg);
-    }
-  }
-}
 
 /** A lounge armchair (steel frame, woven-look cushions) and a side table. */
 export function buildFurniture(ctx: HouseCtx) {

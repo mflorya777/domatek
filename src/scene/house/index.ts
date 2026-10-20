@@ -4,7 +4,7 @@ import { getProject } from '../../data/projects';
 import type { Materials } from '../materials';
 import { buildBase } from './base';
 import { HouseCtx } from './context';
-import { buildFurako, buildFurniture } from './extras';
+import { buildFurniture } from './extras';
 import { buildInterior } from './interior';
 import { buildRoof } from './roof';
 import { createSmoke } from './smoke';
@@ -68,7 +68,6 @@ export function buildHouse(config: Config, mats: Materials): HouseModel {
   buildRoof(ctx);
   const base = buildBase(ctx);
   buildInterior(ctx);
-  if (config.furako) buildFurako(ctx);
   if (config.furniture) buildFurniture(ctx);
 
   const merged = ctx.b.build((k) => mats.resolve(k, config));

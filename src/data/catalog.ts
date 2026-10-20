@@ -190,13 +190,6 @@ export const SECTIONS: Section[] = [
         price: ((v: string, { m }: Ctx) => ({ open: 0, firewood: 6500, profile: 2900 })[v as 'open'] * m.perimeter) as Rule,
       },
       {
-        key: 'furako',
-        label: 'Купель-фурако',
-        kind: 'toggle',
-        toggleText: 'Кедр, Ø 1,8 м, встроенная печь',
-        price: ((v: boolean) => (v ? 285000 : 0)) as Rule,
-      },
-      {
         key: 'furniture',
         label: 'Мебель для террасы',
         kind: 'toggle',
