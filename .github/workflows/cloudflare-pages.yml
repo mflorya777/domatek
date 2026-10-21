@@ -2,7 +2,7 @@ name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, claude/determined-babbage-qgv5fk]
   workflow_dispatch:
 
 permissions:

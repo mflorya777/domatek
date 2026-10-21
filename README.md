@@ -71,7 +71,7 @@ npm run build      # сборка в dist/ (относительные пути 
 - Телефон и `requestEndpoint` (приём заявок JSON-ом) в `src/data/company.ts`, ссылку на политику ПДн.
 - Реальные цены и, при необходимости, проекты из каталога компании.
 - Workflow `.github/workflows/cloudflare-pages.yml` публикует сборку на Cloudflare Pages (`*.pages.dev`)
-  при пуше в `main` или вручную (Actions → Deploy to Cloudflare Pages → Run workflow).
+  при пуше в основную ветку (`claude/determined-babbage-qgv5fk` или `main`) или вручную (Actions → Deploy to Cloudflare Pages → Run workflow).
   Один раз нужно:
   1. В Cloudflare: Workers & Pages → Create → Pages → Direct Upload, создать проект `domatek`
      (сайт будет на `https://domatek.pages.dev`). Другое имя проекта укажите в переменной
