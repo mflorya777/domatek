@@ -109,7 +109,7 @@ export class App {
         <div><div class="total-label">Предварительная стоимость</div><div class="total"></div></div>
         <div class="per"></div>
       </div>
-      ${PRICES_VERIFIED ? '' : '<div class="demo-note">Пилот: цены демонстрационные, точный расчёт — у менеджера</div>'}
+      ${PRICES_VERIFIED ? '' : '<div class="demo-note">Цены ориентировочные, точный расчёт — у менеджера</div>'}
       <div class="foot-actions">
         <button class="btn" data-act="spec">Смета</button>
         <button class="btn btn-primary" data-act="request">Получить точный расчёт</button>
@@ -590,7 +590,7 @@ export class App {
     html += `<tr class="sum"><td>Итого</td><td>${rub(q.total)}</td></tr>`;
     t.innerHTML = html;
     body.appendChild(t);
-    if (!PRICES_VERIFIED) body.appendChild(el('div', 'demo-note', 'Пилотная версия: цены демонстрационные и требуют сверки с прайсом компании.'));
+    if (!PRICES_VERIFIED) body.appendChild(el('div', 'demo-note', 'Цены ориентировочные, точную стоимость рассчитает менеджер.'));
     const actions = el('div', 'modal-actions');
     const print = el('button', 'btn', 'Печать / PDF');
     print.addEventListener('click', () => window.print());
@@ -637,7 +637,7 @@ export class App {
       const body = el('div');
       body.innerHTML = sent
         ? '<p>Заявка отправлена — менеджер свяжется с вами в ближайшее время.</p>'
-        : `<p style="margin-top:0">Отправка заявок для пилота не подключена. Текст заявки со всеми параметрами — ниже, его можно скопировать и отправить менеджеру.</p>`;
+        : `<p style="margin-top:0">Онлайн-отправка заявок пока не подключена. Текст заявки со всеми параметрами — ниже, его можно скопировать и отправить менеджеру.</p>`;
       if (!sent) {
         const box = el('div', 'summary-box');
         box.textContent = `Имя: ${data.name}\nТелефон: ${data.phone}\nУчасток: ${data.place || '—'}\nКомментарий: ${data.comment || '—'}\n\n${payload.summary}`;

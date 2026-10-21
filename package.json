@@ -2,7 +2,7 @@
   "name": "domatek-configurator",
   "private": true,
   "version": "1.0.0",
-  "description": "3D-конфигуратор модульных бань DOMATEK (пилот)",
+  "description": "3D-конфигуратор модульных бань DOMATEK",
   "type": "module",
   "scripts": {
     "dev": "vite",

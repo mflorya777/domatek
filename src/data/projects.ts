@@ -102,19 +102,19 @@ export const WALL_T = 0.2; // wall thickness from inner lining to sheathing
 export const CLAD_BOTTOM = FLOOR_Y - 0.2;
 
 /**
- * «Норд» — two 2.4 × 6 m modules joined in an L, with a deck tucked into the inner corner.
+ * «Север» — two 2.4 × 6 m modules joined in an L, with a deck tucked into the inner corner.
  * Reference: client photo #1 (graphite profiled sheet on the ends, pine on the inner facades).
  */
 const NORD: Project = {
   id: 'nord',
-  name: 'Норд 29',
+  name: 'Север',
   kind: 'Угловая баня из двух модулей с террасой',
   description:
     'Два модуля 2,4 × 6 м под углом: парная и моечная в одном, просторная комната отдыха с панорамным остеклением — в другом. Терраса 13,7 м² во внутреннем углу, печь с выносной топкой со стороны террасы.',
   modules: 2,
   size: [8.4, 6.0],
   buildDays: 45,
-  basePrice: 2_480_000,
+  basePrice: 599_000,
   walls: [
     { from: [0, 0], to: [0, 2.4], cladding: 'accent', openings: [] },
     {
@@ -180,12 +180,12 @@ const NORD: Project = {
 };
 
 /**
- * «Хюгге» — single 3 × 6 m module with a covered porch cut into the facade.
+ * «Север Мини» — single 3 × 6 m module with a covered porch cut into the facade.
  * Reference: client photo #2 (vertical pine boards, graphite planken, firewood plinth).
  */
 const HYGGE: Project = {
   id: 'hygge',
-  name: 'Хюгге 15',
+  name: 'Север Мини',
   kind: 'Компактная баня с крытым крыльцом',
   description:
     'Один модуль 3 × 6 м: парная с топкой из-под навеса, моечная и комната отдыха с панорамным окном. Крыльцо утоплено в объём — дрова и вход всегда под крышей.',

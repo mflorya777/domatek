@@ -20,7 +20,7 @@ export const COMPANY = {
 };
 
 /**
- * Prices in the pilot are demonstration values, not the client's price list.
+ * Prices are not yet fully checked against the client's price list.
  * Set to true after the numbers in projects.ts / catalog.ts are checked against domatek54.ru.
  */
 export const PRICES_VERIFIED = false;
