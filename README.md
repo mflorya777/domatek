@@ -70,8 +70,16 @@ npm run build      # сборка в dist/ (относительные пути 
 
 - Телефон и `requestEndpoint` (приём заявок JSON-ом) в `src/data/company.ts`, ссылку на политику ПДн.
 - Реальные цены и, при необходимости, проекты из каталога компании.
-- Workflow `.github/workflows/pages.yml` публикует сборку на GitHub Pages при пуше в `main`
-  (в настройках репозитория: Pages → Source → GitHub Actions).
+- Workflow `.github/workflows/cloudflare-pages.yml` публикует сборку на Cloudflare Pages (`*.pages.dev`)
+  при пуше в `main` или вручную (Actions → Deploy to Cloudflare Pages → Run workflow).
+  Один раз нужно:
+  1. В Cloudflare: Workers & Pages → Create → Pages → Direct Upload, создать проект `domatek`
+     (сайт будет на `https://domatek.pages.dev`). Другое имя проекта укажите в переменной
+     репозитория `CLOUDFLARE_PROJECT_NAME`.
+  2. Создать API-токен с правом *Account → Cloudflare Pages → Edit* (My Profile → API Tokens).
+  3. В GitHub: Settings → Secrets and variables → Actions добавить секреты `CLOUDFLARE_API_TOKEN`
+     и `CLOUDFLARE_ACCOUNT_ID` (ID аккаунта — в правой колонке на главной странице Cloudflare).
+  4. В настройках репозитория отключить GitHub Pages (Settings → Pages), если он был включён.
 
 ## Лицензии ассетов
 

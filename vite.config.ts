@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 
-// Relative base so the build works from any sub-path (GitHub Pages, client site folder, etc.)
+// Relative base so the build works from any sub-path (Cloudflare Pages, client site folder, etc.)
 export default defineConfig({
   base: './',
   build: {
